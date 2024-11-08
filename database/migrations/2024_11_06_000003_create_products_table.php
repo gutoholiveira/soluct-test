@@ -14,29 +14,30 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id(Product::CODE);
+            $table->id();
+            $table->string(Product::CODE);
             $table->enum(Product::STATUS, ProductStatus::toArray());
             $table->timestamp(Product::IMPORTED_T);
-            $table->string(Product::URL);
+            $table->text(Product::URL);
             $table->string(Product::CREATOR);
             $table->integer(Product::CREATED_T);
             $table->integer(Product::LAST_MODIFIED_T);
             $table->string(Product::PRODUCT_NAME);
             $table->string(Product::QUANTITY);
             $table->string(Product::BRANDS);
-            $table->string(Product::CATEGORIES);
+            $table->text(Product::CATEGORIES);
             $table->string(Product::LABELS);
             $table->string(Product::CITIES);
             $table->string(Product::PURCHASE_PLACES);
             $table->string(Product::STORES);
-            $table->string(Product::INGREDIENTS_TEXT);
+            $table->text(Product::INGREDIENTS_TEXT);
             $table->string(Product::TRACES);
             $table->string(Product::SERVING_SIZE);
-            $table->float(Product::SERVING_QUANTITY);
+            $table->string(Product::SERVING_QUANTITY);
             $table->integer(Product::NUTRISCORE_SCORE);
             $table->string(Product::NUTRISCORE_GRADE);
             $table->string(Product::MAIN_CATEGORY);
-            $table->string(Product::IMAGE_URL);
+            $table->text(Product::IMAGE_URL);
         });
     }
 
