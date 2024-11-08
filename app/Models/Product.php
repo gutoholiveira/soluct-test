@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    const ID               = 'id';
     const CODE             = 'code';
     const STATUS           = 'status';
     const IMPORTED_T       = 'imported_t';
@@ -31,6 +32,7 @@ class Product extends Model
     const MAIN_CATEGORY    = 'main_category';
     const IMAGE_URL        = 'image_url';
 
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -71,7 +73,7 @@ class Product extends Model
     protected function casts(): array
     {
         return [
-            self::CODE             => 'integer',
+            self::CODE             => 'string',
             self::STATUS           => ProductStatus::class,
             self::IMPORTED_T       => 'datetime',
             self::URL              => 'string',
@@ -89,7 +91,7 @@ class Product extends Model
             self::INGREDIENTS_TEXT => 'string',
             self::TRACES           => 'string',
             self::SERVING_SIZE     => 'string',
-            self::SERVING_QUANTITY => 'float ',
+            self::SERVING_QUANTITY => 'string',
             self::NUTRISCORE_SCORE => 'integer',
             self::NUTRISCORE_GRADE => 'string',
             self::MAIN_CATEGORY    => 'string',
