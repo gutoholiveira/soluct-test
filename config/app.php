@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // Time to sync products
+    'sync_time' => env('SYNC_TIME', '01:00'),
 ];
