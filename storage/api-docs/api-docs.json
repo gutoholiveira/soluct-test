@@ -6,6 +6,82 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/status": {
+            "get": {
+                "tags": [
+                    "Status"
+                ],
+                "summary": "Get API Status",
+                "description": "Retrieves the current status of the API, including database connection, last cron execution time, system uptime, and memory usage.",
+                "operationId": "529a5f60226b38cd1360e70679fe83f7",
+                "responses": {
+                    "200": {
+                        "description": "API status details retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "api_details": {
+                                            "properties": {
+                                                "database_connection": {
+                                                    "properties": {
+                                                        "read": {
+                                                            "description": "Status of read connection to the database",
+                                                            "type": "boolean",
+                                                            "example": true
+                                                        },
+                                                        "write": {
+                                                            "description": "Status of write connection to the database",
+                                                            "type": "boolean",
+                                                            "example": true
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "last_cron_execution": {
+                                                    "description": "Timestamp of the last cron job execution or a message indicating it hasn't run recently",
+                                                    "type": "string",
+                                                    "example": "2024-11-08 12:00:00"
+                                                },
+                                                "uptime": {
+                                                    "description": "The system uptime in a human-readable format",
+                                                    "type": "string",
+                                                    "example": "3 days, 4 hours, 15 minutes"
+                                                },
+                                                "memory_usage": {
+                                                    "description": "Current memory usage of the system",
+                                                    "type": "string",
+                                                    "example": "100 MB"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "Error message indicating a problem occurred",
+                                            "type": "string",
+                                            "example": "An error occurred while retrieving the status"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/v1/auth/login": {
             "post": {
                 "tags": [
@@ -881,6 +957,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Status",
+            "description": "Status"
+        },
         {
             "name": "Authentication",
             "description": "Authentication"
