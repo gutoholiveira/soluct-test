@@ -12,19 +12,11 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     /**
-     * @var App\Services\AuthService
-     */
-    private $auth_service;
-
-    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(AuthService $auth_service)
-    {
-        $this->auth_service = $auth_service;
-    }
+    public function __construct(private AuthService $auth_service) {}
 
     /**
      * Make the customer or store login
